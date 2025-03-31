@@ -5,7 +5,6 @@
 */
 #include <stdlib.h>
 #include <stdio.h>
-#include <errno.h>
 #include "my_cat.h"
 
 /** 
@@ -15,7 +14,7 @@
 int main(int argc, char **argv)
 {
     if (argc < 2) {
-        fprintf(stderr, "usage: zoe <filename>\n");  // Check for filename argument
+        printf("usage: zoe <filename>\n");  // Check for filename argument
         return 1;
     }
     return read_file(argv[1]);
@@ -27,7 +26,7 @@ int read_file(char *file)
     FILE *fp = fopen(file,"r");
     if (fp == NULL)
     {
-        perror("Error opening file");
+        puts("Error opening file\n");
         return 1;
     }
 
@@ -35,7 +34,7 @@ int read_file(char *file)
 
     if (fclose(fp) == 1)
     {
-        perror("Error closing file");
+        printf("Error closing file\n");
         return 1;
     }
     return 0;
